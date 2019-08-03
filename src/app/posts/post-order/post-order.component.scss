@@ -1,0 +1,26 @@
+mat-card {
+    margin: 10px auto;
+    max-width: 700px;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-card-content:focus {
+    outline: none;
+    border: 0;
+}
+
+img {
+    width: 100%;
+}
+
+
+.errormsg {
+  padding: 10px;
+  opacity: -17px;
+  color: red;
+  border: 1 solid black;
+  margin-bottom: 10px;
+  background-color: #f7efef;
+}

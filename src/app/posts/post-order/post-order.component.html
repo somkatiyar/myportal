@@ -1,0 +1,65 @@
+<ng-container *ngIf="post">
+
+  <mat-card>
+
+
+
+    <mat-card-content>
+      <b>Title :</b> {{post.title}}
+    </mat-card-content>
+
+    <mat-card-content>
+      <b> Category :</b> {{post.category}}
+    </mat-card-content>
+    <mat-card-content>
+      <b> Price :</b> {{post.price}}
+    </mat-card-content>
+
+
+    <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="username" name="username">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput matInput placeholder="Email" [(ngModel)]="email" name="email" >
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput matInput placeholder="Enter Your Address" [(ngModel)]="address" name="address" >
+        </mat-form-field>
+      <br>
+
+
+      <mat-form-field>
+          <input matInput 
+           [matDatepicker]="picker1"  placeholder="Select Date" [(ngModel)]="fromdate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+
+        <!-- <mat-form-field>
+            <input matInput [matDatepicker]="picker2"  placeholder="To Date" [(ngModel)]="todate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field> -->
+
+          <div class="errormsg" *ngIf="isErrorMsg">
+           Sorry..! Product not available for given date.Please select another date..!
+          </div>
+
+          <div class="errormsg" *ngIf="isInvalidDate">
+              Please select valid date (To date can't exceed from date )
+             </div>
+
+             <!-- <div class="errormsg" *ngIf="isInvalidForm">
+                Please  fill all fields..!
+               </div> -->
+      <button mat-raised-button (click)="finalSubmit()" color="accent" [disabled]="disablebtn" >{{btnTitle}}</button>
+      <button mat-raised-button (click)="backToDetail()" color="primary"  style="float: right">Back To Order </button>
+
+
+  </mat-card>
+
+</ng-container>
+

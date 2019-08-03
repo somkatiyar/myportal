@@ -1,0 +1,88 @@
+<ng-container *ngIf="post">
+
+
+  <div [hidden]="!editing">
+    <mat-card>
+      <h1>Edit Post</h1>
+        <mat-form-field>
+          <input matInput placeholder="Post title" [(ngModel)]="post.title" name="title">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <textarea matInput placeholder="Post content" [(ngModel)]="post.content" name="content" rows="10"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button (click)="updatePost()" color="accent">Save</button>
+        <button mat-button (click)="editing=false" *ngIf="editing">Cancel</button>
+  </mat-card>
+  </div>
+
+  <div [hidden]="editing">
+    <mat-card>
+      <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
+      <h2>{{post.title}}</h2>
+     <b>Price :</b> <h2>{{post.price}}</h2>
+      <button  style="float: right"
+       mat-raised-button (click)="placeOrder()" color="primary">Place Order</button>
+      <p>
+        <small>Posted by {{post.author}} &bull; </small>
+      </p>
+
+
+      <mat-card-content>
+        <p>{{ post.content }}</p>
+      </mat-card-content>
+
+<div style="text-align: right">
+  <mat-card-content>
+  <b><p>{{ post.userName }}</p></b>  
+  </mat-card-content>
+
+  <mat-card-content>
+    <p>{{ post.comment }}</p>
+  </mat-card-content>
+</div>
+  
+      <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
+        <button mat-icon-button (click)="editing=true">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete(post.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+
+
+      <mat-accordion hidden>
+        <mat-expansion-panel>
+    
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Leave Comment
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         
+  
+          <mat-form-field>
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <textarea matInput placeholder="Post Comment" [(ngModel)]="comment" name="comment" rows="10"></textarea>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button (click)="createComment()" color="accent" [disabled]="!username || !comment  ">{{saving}}</button>
+    
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+
+    </mat-card>
+  </div>
+</ng-container>
+
+
+
+
+

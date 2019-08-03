@@ -1,0 +1,67 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+<a (click)="goToContact()" style="cursor: pointer; color:aqua">Contact</a>
+      <span ></span>
+    <div *ngIf="auth.afAuth.authState | async as user ">
+       
+      
+        
+        <button mat-raised-button color="accent" (click)="allOrders()" style="text-align: left">Orders</button>
+
+        <button mat-raised-button color="accent" (click)="allItem()" style="text-align: left">List</button>
+    <button mat-raised-button color="accent" routerLink="/dashboard" style="text-align: left">Write  a Post</button>
+        <button (click)="logout()" mat-raised-button mat-button>Logout</button>
+        {{user.displayName}}
+    
+      
+
+    </div>
+    <div *ngIf="loginButton">
+   
+        <button (click)="openModel()"mat-raised-button mat-button data-toggle="modal" data-target="#myModal">Login with Google</button>
+    
+    </div>
+   
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button> -->
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Admin Security Check</h4>
+        <button type="button" class="close" #close data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       <input type="text" class="form-control" 
+       placeholder="Enter Security Code Here.."
+       [(ngModel)]="security_code">
+      </div>
+
+      <div *ngIf="security_code_error" style="color: red; padding: 10px;
+      margin-left: 5px;">
+        {{security_code_error}}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="securityCheck()">Submit</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  #close data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

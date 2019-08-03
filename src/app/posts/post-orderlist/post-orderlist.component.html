@@ -1,0 +1,38 @@
+<section >
+
+
+    <mat-card *ngFor="let order of orders ">
+    
+      <mat-card-content  >
+        <!-- <h1 >{{post.category}}</h1> -->
+        <b>Title:</b> <small> {{order.title}} </small><br>
+        <b>Category:</b> <small> {{order.category}} </small><br>
+       <b>Price:</b> <small> {{order.price}} </small><br>
+       <b>Name:</b> <small> {{order.username}} </small><br>
+       <b>Email:</b> <small> {{order.email}} </small><br>
+       <b>Address:</b> <small> {{order.address}} </small><br>
+       <b>Order Place Date:</b> <small> {{order.published.toDate() | date }} </small><br>
+       <b>Booking Date:</b> <small> {{order.fromDate.toDate() | date}} </small><br>
+      </mat-card-content>
+
+      <button mat-icon-button (click)="sendEmail()"  color="primary">SEND EMAIL
+          
+        </button>
+
+
+      <mat-card-actions align="end" >
+         
+          <button mat-icon-button (click)="delete(order.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+  
+    </mat-card>
+  
+  
+  
+     
+  
+  
+  
+  </section>

@@ -1,0 +1,93 @@
+
+
+
+
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+
+  <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="selectByCategory('all')">
+    
+          <span>All Items</span>
+        </button>
+    <button mat-menu-item [matMenuTriggerFor]="lahege" >Lahange</button>
+    <button mat-menu-item [matMenuTriggerFor]="jewellery">Jewellery</button>
+    <button mat-menu-item [matMenuTriggerFor]="gown">Gawn</button>
+    <button mat-menu-item [matMenuTriggerFor]="facial">Facial</button>
+    <button mat-menu-item [matMenuTriggerFor]="makeup">Makeup</button>
+  </mat-menu>
+  
+  <mat-menu #lahege="matMenu">
+    <button mat-menu-item (click)="selectByCategory('bridal_lagege')">Bridal Lahege</button>
+    <button mat-menu-item (click)="selectByCategory('side_lagege')">Side Lahege</button>
+    <button mat-menu-item (click)="selectByCategory('engegement_lagege')">Engagement Lehenge</button>
+    
+  </mat-menu>
+  
+  <mat-menu #jewellery="matMenu">
+    <button mat-menu-item (click)="selectByCategory('earing')">Earing</button>
+    <button mat-menu-item (click)="selectByCategory('bridal_jewellery')">Bridal Jewellery</button>
+    <button mat-menu-item (click)="selectByCategory('side_jewellery')">Side Jewellery</button>
+    <button mat-menu-item (click)="selectByCategory('haldi_jewellery')">Haldi Jewellery</button>
+
+  </mat-menu>
+  
+  <mat-menu #gown="matMenu">
+    <button mat-menu-item (click)="selectByCategory('partwear-gawn')" >Party wear Gawn</button>
+    <button mat-menu-item (click)="selectByCategory('engegement_gawn')">Engagement Gawn</button>
+    
+  </mat-menu>
+  
+  <mat-menu #facial="matMenu">
+    <button mat-menu-item (click)="selectByCategory('vlcc-insta-glow')">VLCC Insta Glow Facial</button>
+    <button mat-menu-item (click)="selectByCategory('vlcc-package')">VLCC Package Facial</button>
+    <button mat-menu-item (click)="selectByCategory('lotus-gold')">Lotus Gold Facial</button>
+    <button mat-menu-item (click)="selectByCategory('mix-fruit')">Mix Fruit Facial</button>
+    <button mat-menu-item (click)="selectByCategory('face_deltan')">Face Deltan</button>
+  </mat-menu>
+  
+  <mat-menu #makeup="matMenu">
+    <button mat-menu-item (click)="selectByCategory('side-makeup')">Side Makeup</button>
+    <button mat-menu-item (click)="selectByCategory('bridal_makeup')">Bridal Makeup</button>
+    <button mat-menu-item (click)="selectByCategory('day-makeup')">Day Makeup</button>
+    <button mat-menu-item (click)="selectByCategory('engegement-makeup')">Engagement Makeup</button>
+  </mat-menu>
+
+
+
+
+
+
+
+
+
+<section >
+
+
+  <mat-card *ngFor="let post of posts ">
+  
+    <mat-card-content routerLink="{{post.id}}" >
+      <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
+
+      <h2 style="white-space:pre">{{post.title}}</h2>
+     <b>Category:</b> <small> {{post.category}} &bull;</small><br>
+     <b>Price:</b> <small> {{post.price}} &bull;</small>
+
+      <p>
+        <small>Posted by {{post.author}} &bull;</small>
+       
+      </p>
+    </mat-card-content>
+    <mat-card-actions style="text-align: end" *ngIf="auth.currentUserId === post.authorId">
+      <button mat-icon-button (click)="delete(post.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+
+
+</section> 
+
